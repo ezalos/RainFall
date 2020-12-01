@@ -14,8 +14,9 @@
 		* Here we instead want to execute the `run()` function
 	* When `gets()` is called we want to write past through the buffer, here is the stack layout:
 		* [gets arg :	64 octets] -> We can write any value here
-		* [EBP:			8 octetcs] -> We would like to conserve this value so we avoid segfalut
-		* [EIP:			8 octetcs] -> We want to change this value so it points to `run()`, it needs to be `0x08048444`
+		* [EBP:			4  octecs] -> old EBP
+		* [Allignement: 8  octets]
+		* [EIP:			4  octecs] -> We want to change this value so it points to `run()`, it needs to be `0x08048444`
 	
  * We now have to put all this theory in practice, keeping in mind the stack uses Big Endian
 
@@ -23,6 +24,8 @@
  ```sh
 python -c "print('x' * 76 + '44840408'.decode('hex'))" > /var/crash/lvl1
  ```
+ The size is 76 because => 64 (buffer to gets) + 4 (EBP) + 8 (Allignemnet)
+
  2. Now we want to use the content of lvl1 as stdin for gets,
  and then manually get access to stdin once `system("/bin/sh")` is executed.
  For this we can use cat, with `-` as a second argument, so once the file has been read,
