@@ -5,7 +5,7 @@
  * Here's the hand-decompiled source code we propose for this binary:
 
 
-<div id="code-element"></div>
+<div id="code-element">
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
       axios({
@@ -16,6 +16,7 @@
          document.getElementById("code-element").innerHTML = response.data;
       });
 </script>
+</div>
 
  * We run the program with gdb and we observe that:
 	* `main()` makes use of `gets()` with an on stack array of size 0x40
