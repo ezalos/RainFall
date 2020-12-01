@@ -1,15 +1,17 @@
+// gcc source.c -fno-stack-protector
+
 #include <stdio.h>
 #include <stdlib.h>
 
-void	run(void)
+void run()
 {
-	fwrite("Good... Wait what?\n", 1, 19, stdout);
+	fwrite("Good... Wait what?\n", 0x13, 0x1, stdout);
 	system("/bin/sh");
 }
 
-void	main()
+int main()
 {
-	char	buf[0x40];
+	char	var[0x40];
 
-	gets(buf);
+	gets(var);
 }
