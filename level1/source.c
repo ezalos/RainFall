@@ -11,6 +11,6 @@ void run()
 
 int main()
 {
-	char var[76];
+	char var[0x40];
 	gets(var);
 }
