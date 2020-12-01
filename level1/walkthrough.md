@@ -3,8 +3,19 @@
 ## Resolution
  * There is one file in our home, ```level1```, belonging to ```level2``` user, with suid.
  * Here's the hand-decompiled source code we propose for this binary:
- 
- <%@include file="source.c"%>
+
+
+<div id="code-element"></div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+      axios({
+      method: 'get',
+      url: 'https://raw.githubusercontent.com/ezalos/RainFall/master/level1/source.c'
+       })
+      .then(function (response) {
+         document.getElementById("code-element").innerHTML = response.data;
+      });
+</script>
 
  * We run the program with gdb and we observe that:
 	* `main()` makes use of `gets()` with an on stack array of size 0x40
