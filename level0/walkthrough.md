@@ -1,7 +1,7 @@
 # Level0
 
 ## Resolution
- * There is one file in our home, belonging to ```level1``` user, with suid.
+ * There is one file in our home, ```level0```, belonging to ```level1``` user, with suid.
  * We run the program with gdb and we observe that:
 	* the program applies ```atoi``` function to ```argv[1]``` and compares the return value to ```0x1a7``` (```423```):
 		* if not equal, prints ```No !``` on the ```stderr``` and returns ```0```
