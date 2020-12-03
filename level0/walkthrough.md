@@ -1,6 +1,6 @@
 # Level0
 
-## Resolution
+## Solution
  * There is one file in our home, ```level0```, belonging to ```level1``` user, with suid.
  * We run the program with gdb and we observe that:
 	* the program applies ```atoi``` function to ```argv[1]``` and compares the return value to ```0x1a7``` (```423```):

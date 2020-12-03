@@ -1,8 +1,10 @@
 # Level2
 
+# VERIFIER QUIL SAGIT BIEN DE STDOUT DANS LE MAIN (objdump -D level1 (surement section .bss))
+
 ## Solution
 
-* There is one file in our home, ```level1```, belonging to ```level2``` user, with suid.
+* There is one file in our home, ```level2```, belonging to ```level3``` user, with suid.
 * Here's the hand-decompiled source code we propose for this binary: [source.c](source.c)
 
 * The only purpose of the ```main``` function is to call ```p``` function.

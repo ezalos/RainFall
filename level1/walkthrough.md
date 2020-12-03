@@ -1,6 +1,6 @@
 # Level1
 
-## Resolution
+## Solution
  * There is one file in our home, ```level1```, belonging to ```level2``` user, with suid.
  * Here's the hand-decompiled source code we propose for this binary: [source.c](source.c)
 

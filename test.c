@@ -1,15 +1,9 @@
-#include <unistd.h>
-#include <libc.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
 
 int	main(void)
 {
-	char	str[1000];
-	
-	bzero(str, 1000);
-	gets(str);
-	printf("%s\n", str);
-	//system(str);
+	int		i;
+	printf("%08x%08x%08x%08x%n\n", &i);
+	printf("%d\n", i);
 	return (0);
 }
