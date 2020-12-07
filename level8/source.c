@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <libc.h>
+#include <stdlib.h>
 
 const char	*auth_str = "auth ";
 const char	*reset_str = "reset";
@@ -66,3 +66,5 @@ int		main(void)
 	}
 	return (0);
 }
+
+// gcc -fno-stack-protector source.c -o source
