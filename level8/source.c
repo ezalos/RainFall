@@ -14,6 +14,7 @@ int		main(void)
 	static char	*service;
 	char		buf[0x80];		
 	int			i;
+	int			j;
 
 	while (42)
 	{
@@ -29,7 +30,11 @@ int		main(void)
 			i++;
 		}
 		auth = malloc(4);
-		strcpy(auth, &buf[i]);
+		j = i;
+		while (buf[j])
+			j++;
+		if (j <= 14)
+			strcpy(auth, &buf[i]);
 
 		reset_checker:
 		i = 0;
