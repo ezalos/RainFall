@@ -16,8 +16,8 @@ void	p(char *dest, char *s)
 
 void	pp(char *dest)
 {
-	char	buf1[0x10];
-	char	buf2[0x14];
+	char	buf1[0x14];
+	char	buf2[0x10];
 	int		i;
 
 	p(buf2, " - ");
