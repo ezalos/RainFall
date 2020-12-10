@@ -20,7 +20,11 @@ void	p(char *dest, char *s)
 void	pp(char *dest)
 {
 	char	buf1[0x14];
+<<<<<<< HEAD
 	char	buf2[0x14];
+=======
+	char	buf2[0x10];
+>>>>>>> 4a8ee8930fe23e5d9bfddb583bad52e56d346c67
 	int		i;
 
 	p(buf2, " - ");
