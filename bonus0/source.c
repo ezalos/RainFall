@@ -13,10 +13,13 @@ void	p(char *dest, char *s)
     strncpy(dest, buff, 0x14);
     return;
 }
+// BUFFS : [1st p][2nd p]
+
+// strcpy take [1st + 2nd], strcat take [2nd]
 
 void	pp(char *dest)
 {
-	char	buf1[0x10];
+	char	buf1[0x14];
 	char	buf2[0x14];
 	int		i;
 
