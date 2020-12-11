@@ -5,7 +5,7 @@
 
 void	p(char *dest, char *s)
 {
-    char	buff[0xffc];
+    char	buff[0x1000];
 
     puts(s);
     read(0, &buff, 0x1000);
@@ -14,30 +14,28 @@ void	p(char *dest, char *s)
     return;
 }
 
-void	pp(char *dest)
+void	pp(char *final_buf)
 {
 	char	buf1[0x14];
-	char	buf2[0x10];
-	int		i;
+	char	buf2[0x14];
+	size_t	i;
 
 	p(buf2, " - ");
 	p(buf1, " - ");
-	strcpy(dest, buf2);
-	i = 0;
-	while (dest[i])
-		i++;
-	dest[i] = ' ';
-	dest[i + 1] = '\0';
-	strcat(dest, buf1);
+	strcpy(final_buf, buf2);
+	i = strlen(final_buf);
+	final_buf[i] = ' ';
+	final_buf[i + 1] = '\0';
+	strcat(final_buf, buf1);
 }
 
 int main(void)
 {
-    char	buf[0x2a];
+    char	final_buf[0x2a];
 
-    pp(buf);
-    puts(buf);
-    return 0;
+    pp(final_buf);
+    puts(final_buf);
+    return (0);
 }
 
 // gcc -fno-stack-protector source.c -o source
