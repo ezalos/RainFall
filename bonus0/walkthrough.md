@@ -19,7 +19,7 @@
 
 * What we did with all of that:
 
-	* our goal was to use the ```final_buf``` to write an address to a shellcode in place of the former ```eip``` address
+	* our goal was to use the ```final_buf``` to write an address of a shellcode in place of the former ```eip``` address
 	* the offset between the beginning of ```final_buf``` and the location of former ```eip``` address is ```0x36 = 54``` bytes : it means that we wanted to write the address of our shellcode ```54``` bytes after the beginning of ```final_buf```
 	* in theory we could only write ```40``` bytes at the end as only ```20``` bytes are copied in respectively ```buf2``` and ```buf1``` after call to ```read```
 	* but ```buf2``` and ```buf1``` are contiguous in memory and the content of call to ```read``` is copied with ```strncpy```: if there is no ```\0``` in the first ```20``` bytes, the copy won't be terminated
