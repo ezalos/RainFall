@@ -9,10 +9,8 @@ char	c[0x44];
 
 void	m()
 {
-	int		tm;
 
-	tm = time(NULL);
-	printf("%s - %d\n", c, tm);
+	printf("%s - %d\n", c, time(NULL));
 }
 
 int		main(int ac, char **av)
@@ -29,7 +27,7 @@ int		main(int ac, char **av)
 	m3 = malloc(0x8);//028
 	*m3 = 0x2;
 
-	m1[1] = malloc(0x8);//038 ?
+	m3[1] = malloc(0x8);//038 ?
 
 	strcpy(m1[1], av[1]);
 

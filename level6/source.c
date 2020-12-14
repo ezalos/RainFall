@@ -1,14 +1,14 @@
 #include <string.h>
 #include <stdlib.h>
 
-void	m(void)
-{
-	puts("Nope");
-}
-
 void	n(void)
 {
 	system("/bin/cat /home/user/level7/.pass");
+}
+
+void	m(void)
+{
+	puts("Nope");
 }
 
 void	main(int ac, char **av)
