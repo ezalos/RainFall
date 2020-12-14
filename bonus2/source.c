@@ -33,7 +33,9 @@ int		main(int ac, char **av)
 
 	if (ac != 3)
 		return (1);
-	char		buf[0x4c] = {'\0'};
+	char		buf[0x4c];
+	char		tmp[0x40];
+	memset(buf, '\0', 0x4c);
 	strncpy(buf, av[1], 0x28);
 	strncpy(buf + 0x28, av[2], 0x20);
 	if ((lang = getenv("LANG")))
