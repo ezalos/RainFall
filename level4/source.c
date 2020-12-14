@@ -22,4 +22,4 @@ void	main(void)
 	n();
 }
 
-// gcc -fno-stack-protector source.c -o source
+// gcc -fno-stack-protector source.c -o source  -z execstack

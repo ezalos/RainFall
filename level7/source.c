@@ -1,3 +1,5 @@
+// gcc -fno-stack-protector source.c -o source  -z execstack
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>

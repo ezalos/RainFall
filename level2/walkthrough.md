@@ -1,7 +1,4 @@
 # Level2
-
-# VERIFIER QUIL SAGIT BIEN DE STDOUT DANS LE MAIN (objdump -D level1 (surement section .bss))
-
 ## Solution
 
 * There is one file in our home, ```level2```, belonging to ```level3``` user, with suid.
@@ -49,7 +46,7 @@
 	* between offsets ```30``` and ```49```, the program checks that the former value of ```eip```, located at ```ebp + 0x4```, doesn't start with ```b``` value : indeed it would indicate a try to execute code on the stack. If the value starts with ```b```, the program exits.
 	* at offset ```100```, there is a call to ```strdup```: what we wrote thanks to ```gets``` function will now be copied on the heap
 
-	
+
 * What we did with all of this:
 
 	* the goal was to perform a buffer overflow attack, by writing a shell code located in the buffer used for ```gets``` function, and a new address to replace the former ```eip```.
@@ -70,7 +67,3 @@
 	```sh
 	cd ../level3; cat .pass
 	```
-
-
-
-

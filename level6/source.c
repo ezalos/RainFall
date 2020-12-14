@@ -23,4 +23,4 @@ void	main(int ac, char **av)
 	(*ptr2)();
 }
 
-// gcc -fno-stack-protector source.c -o source
+// gcc -fno-stack-protector source.c -o source  -z execstack

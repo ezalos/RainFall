@@ -1,3 +1,4 @@
+// gcc -fno-stack-protector source.cpp -o source -z execstack -lstdc++
 #include <string.h>
 #include <unistd.h>
 
@@ -5,6 +6,8 @@ class Nb;
 
 int			operator+(Nb a, Nb b);
 int			operator-(Nb a, Nb b);
+
+// void		*g_fun_tab[2] = {&operator+, &operator-};
 
 int	(*g_funtab[2])(Nb, Nb) = {&operator+, &operator-};
 
@@ -31,12 +34,12 @@ class Nb
 
 int		operator+(Nb a, Nb b)
 {
-	return(a.value + b.value);
+	return (a.value + b.value);
 }
 
 int		operator-(Nb a, Nb b)
 {
-	return(a.value - b.value);
+	return (a.value - b.value);
 }
 
 int		main(int ac, char **av)
@@ -44,10 +47,11 @@ int		main(int ac, char **av)
 	if (ac < 2)
 		_exit(1);
 
-	Nb	*a = new Nb(5);
-	Nb	*b = new Nb(6);
+	Nb	*a;
+	Nb	*b;
+
+	b = new Nb(6);
+	a = new Nb(5);
 	a->setAnnotation(av[1]);
 	return (((b->fun_tab)[0])(*a, *b));
 }
-
-//gcc -fno-stack-protector -z execstack -o level level.cpp -lstdc++

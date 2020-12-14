@@ -12,7 +12,7 @@ int		main(void)
 {
 	static char	*auth;
 	static char	*service;
-	char		buf[0x80];		
+	char		buf[0x80];
 	int			i;
 	int			j;
 
@@ -72,4 +72,4 @@ int		main(void)
 	return (0);
 }
 
-// gcc -fno-stack-protector source.c -o source
+// gcc -fno-stack-protector source.c -o source  -z execstack

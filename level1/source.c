@@ -1,11 +1,11 @@
-// gcc source.c -fno-stack-protector
+// gcc source.c -fno-stack-protector -z execstack
 
 #include <stdio.h>
 #include <stdlib.h>
 
 void run()
 {
-	fwrite("Good... Wait what?\n", 0x13, 0x1, stdout);
+	fwrite("Good... Wait what?\n", 0x1, 0x13, stdout);
 	system("/bin/sh");
 }
 
