@@ -49,3 +49,5 @@ int		main(int ac, char **av)
 	a->setAnnotation(av[1]);
 	return (((b->fun_tab)[0])(*a, *b));
 }
+
+//gcc -fno-stack-protector -z execstack -o level level.cpp -lstdc++
