@@ -2,7 +2,7 @@
 
 ## Context & Explanation
  * There is one file in our home, ```level9```, belonging to ```bonus0``` user, with suid.
- * Here's the decompiled source code we propose for this binary: [source.c](source.c)
+ * Here's the decompiled source code we propose for this binary: [source.cpp](source.cpp)
 
  * We run the program with gdb and we observe that:
  	* In the `main()`
