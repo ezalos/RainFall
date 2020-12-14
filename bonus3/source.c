@@ -6,10 +6,10 @@
 int main(int ac, char **av)
 {
 	//[esp+0x18]
-	char	buf[0x42];
+	char	spacing[0x42];
 
 	//[esp+0x5a]
-	char	spacing[0x42];
+	char	buf[0x42];
 
 	//[esp+0x9c]
 	FILE	*fd;
