@@ -33,7 +33,7 @@
 * Several interesting information about it:
 
 	* ```n``` calls ```fgets``` at offset ```35``` function with a buffer allocated on the stack.
-	* then it calls ```p``` function (see after) qt offset ```49```, passing the buffer in parameter.
+	* then it calls ```p``` function (see after) at offset ```49```, passing the buffer in parameter.
 	* between offsets ```54``` and ```64```, it compares the value contained at the address ```0x8049810``` with the value ```0x1025544```.
 	* if they are the same, it calls ```system``` function. ```gdb``` allows us to see that the command passed in parameter is ```/bin/cat /home/user/level5/.pass```
 
