@@ -15,19 +15,20 @@ void	m()
 
 int		main(int ac, char **av)
 {
-	int		*m1;//esp + 0x1c
-	int		*m3;//esp + 0x18
-
+	void	**m1;//esp + 0x1c
+	void	**m3;//esp + 0x18
 
 	m1 = malloc(0x8);//008
-	*m1 = 0x1;
+	m1[0] = (void*)0x1;
 
 	m1[1] = malloc(0x8);//018
+	//memcpy(m1[1], &tmp, 0x4);//018
 
 	m3 = malloc(0x8);//028
-	*m3 = 0x2;
+	m3[0] = (void*)0x2;
 
-	m3[1] = malloc(0x8);//038 ?
+	m3[1] =  malloc(0x8);
+	// memcpy(m3[1], malloc(0x8), 0x4);//038 ?
 
 	strcpy(m1[1], av[1]);
 

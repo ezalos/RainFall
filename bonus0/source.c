@@ -23,9 +23,7 @@ void	pp(char *final_buf)
 	p(buf2, " - ");
 	p(buf1, " - ");
 	strcpy(final_buf, buf2);
-	i = strlen(final_buf);
-	final_buf[i] = ' ';
-	final_buf[i + 1] = '\0';
+	strcat(final_buf, " \0");
 	strcat(final_buf, buf1);
 }
 
