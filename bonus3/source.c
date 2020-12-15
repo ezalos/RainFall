@@ -10,7 +10,7 @@ int main(int ac, char **av)
 	FILE	*fd;
 
     fd = fopen("/home/user/end/.pass", "r");
-	memset(buf, 0, 0x84);
+	bzero(buf, 0x84);
     if (fd == 0 || ac != 0x2)
 		return (-1);
 	else
@@ -18,7 +18,7 @@ int main(int ac, char **av)
         fread(buf, 1, 0x42, fd);
 		buf[0x41] = 0;
 		buf[atoi(av[1])] = 0;
-        fread(buf, 1, 0x41, fd);
+        fread(buf + 0x42, 1, 0x41, fd);
         fclose(fd);
         if (strcmp(buf, av[1]) == 0)
             execl("/bin/sh", "sh", (char*)0);
