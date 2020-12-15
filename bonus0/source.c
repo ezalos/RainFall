@@ -18,7 +18,6 @@ void	pp(char *final_buf)
 {
 	char	buf1[0x14];
 	char	buf2[0x14];
-	size_t	i;
 
 	p(buf2, " - ");
 	p(buf1, " - ");
