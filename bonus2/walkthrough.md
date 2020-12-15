@@ -26,7 +26,7 @@
 * What we did with all of that:
 
 	* our goal wa to use the buffer allocated in ```greetuser``` to write an address of a shellcode in place of the former ```eip``` address
-	* the offset between the beginning of the buffer and the location of former ```eip``` address is ```0x4c = 76``` bytes : it means that we wanted to write the address of our shellcode ```76``` bytes after the beginning of ```final_buf```
+	* the offset between the beginning of the buffer and the location of former ```eip``` address is ```0x4c = 76``` bytes : it means that we wanted to write the address of our shellcode ```76``` bytes after the beginning of the buf
 	* as ```argv[1]``` is copied in the ```main``` buffer using ```strncpy```, if there is no ```\0``` in the first ```40``` bytes, the copy won't be terminated
 	* we used it to concatenate ```argv[1]``` with ```argv[2]```, allowing us to store a string up to ```40 + 32 = 72``` bytes
 	* before launching the program we made two modifications in the environment :

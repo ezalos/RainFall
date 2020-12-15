@@ -6,7 +6,7 @@
 
 int	language;
 
-void	greetuser(char *name)
+int	greetuser(char *name)
 {
 	char	buf[0x40];
 
@@ -25,7 +25,7 @@ void	greetuser(char *name)
 	dutch:
 	strcpy(buf, "Goedemiddag! ");
 	end:
-	puts(strcat(buf, name));
+	return (puts(strcat(buf, name)));
 }
 
 int		main(int ac, char **av)
@@ -46,5 +46,5 @@ int		main(int ac, char **av)
 		else if (!memcmp(lang, "nl", 0x2))
 			language = 2;
 	}
-	greetuser(buf);
+	return (greetuser(buf));
 }

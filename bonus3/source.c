@@ -6,17 +6,11 @@
 
 int main(int ac, char **av)
 {
-	//[esp+0x18]
-	char	spacing[0x42];
-
-	//[esp+0x5a]
-	char	buf[0x42];
-
-	//[esp+0x9c]
+	char	buf[0x84];
 	FILE	*fd;
 
     fd = fopen("/home/user/end/.pass", "r");
-	memset(buf, 0, 0x42);
+	memset(buf, 0, 0x84);
     if (fd == 0 || ac != 0x2)
 		return (-1);
 	else
@@ -27,7 +21,7 @@ int main(int ac, char **av)
         fread(buf, 1, 0x41, fd);
         fclose(fd);
         if (strcmp(buf, av[1]) == 0)
-            execl("/bin/sh", "sh", 0);
+            execl("/bin/sh", "sh", (char*)0);
 		else
             puts(&buf[0x42]);
     }
