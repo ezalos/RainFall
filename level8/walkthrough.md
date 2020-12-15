@@ -12,16 +12,16 @@
 		* the program outputs the value of the two pointers
 		* it uses ```fgets``` function and breaks the loop if ```fgets``` returns ```NULL```
 		* it successively checks if the first characters of the user input are:
-			* ```auth ``` ; if yes, it allocates a ```4``` bytes zone on the heap and ```auth``` points on it. It copies the remaining input characters in this zone if they are less or equal to ```0xe```
+			* ```auth ``` ; if yes, it allocates a ```4``` bytes zone on the heap and ```auth``` points on it. It copies the remaining input characters in this zone if they are less or equal to ```0x1e```
 			* ```reset``` ; if yes, it frees the zone pointed by ```auth```
-			* ```service```; if yes, ```service``` points on the return value of a ```strdup``` made on the reamining input characters
+			* ```service```; if yes, ```service``` points on the return value of a ```strdup``` made on the remaining input characters
 			* ```login```; if yes, two possibilities:
 				* if ```auth[0x20]``` is not ```0x0```, launches ```system("/bin/sh")```
 				* if it is equal to ```0x0```, outputs ```Password:\n```
 
 * What we did with all of that:
 
-	* as we would not be able to write ```0x21``` chars at the address pointed by ```auth``` (the limit is ```0xe```), we used the ```service``` part of the program
+	* as we would not be able to write ```0x21``` chars at the address pointed by ```auth``` (the limit is ```0x1e```), we used the ```service``` part of the program
 	* indeed the second allocation is done ```0x10``` bytes after the first ```4``` bytes allocation : we can write ```0x11``` chars (in fact ```0x10``` chars and a ```\n```), and ```auth[0x20]``` won't equal ```0x0```
 	* a ```shell``` is launched with ```level9``` permissions so that we can ```cat``` ```.pass``` file
 	* Here are the steps:

@@ -3,71 +3,38 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-const char	*auth_str = "auth ";
-const char	*reset_str = "reset";
-const char	*service_str = "service";
-const char	*login_str = "login";
+// char	*auth;
+// char	*service;
 
 int		main(void)
 {
 	static char	*auth;
 	static char	*service;
 	char		buf[0x80];
-	int			i;
-	int			j;
 
 	while (42)
 	{
-		auth_checker:
 		printf("%p, %p \n", auth, service);
 		if (!fgets(buf, 0x80, stdin))
 			break ;
-		i = 0;
-		while (auth_str[i])
+		if (!strncmp(buf, "auth ", 5))
 		{
-			if (auth_str[i] != buf[i])
-				goto reset_checker;
-			i++;
+			auth = malloc(4);
+			((int*)auth)[0] = (int)0;
+			if (strlen(buf + 5) <= 0x1e)
+				strcpy(auth, buf + 5);
 		}
-		auth = malloc(4);
-		j = i;
-		while (buf[j])
-			j++;
-		if (j <= 14)
-			strcpy(auth, &buf[i]);
-
-		reset_checker:
-		i = 0;
-		while (reset_str[i])
+		if (!strncmp(buf, "reset", 5))
+			free(auth);
+		if (!strncmp(buf, "service", 6))
+			service = strdup(buf + 7);
+		if (!strncmp(buf, "login", 5))
 		{
-			if (reset_str[i] != buf[i])
-				goto service_checker;
-			i++;
+			if (*(int*)(auth + 0x20))
+				system("/bin/sh");
+			else
+				fwrite("Password:\n", 1, 10, stdout);
 		}
-		free(auth);
-
-		service_checker:
-		i = 0;
-		while (service_str[i])
-		{
-			if (service_str[i] != buf[i])
-				goto login_checker;
-			i++;
-		}
-		service = strdup(&buf[i]);
-
-		login_checker:
-		i = 0;
-		while (login_str[i])
-		{
-			if (login_str[i] != buf[i])
-				goto auth_checker;
-			i++;
-		}
-		if (auth[0x20])
-			system("/bin/sh");
-		else
-			fwrite("Password:\n", 10, 1, stdout);
 	}
 	return (0);
 }
