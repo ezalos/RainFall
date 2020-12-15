@@ -1,8 +1,7 @@
 // gcc -fno-stack-protector source.c -o source  -z execstack
-#include <stdio.h>
 #include <stdlib.h>
-#include <inttypes.h>
 #include <string.h>
+#include <unistd.h>
 
 
 int main(int ac, char **av)
@@ -16,7 +15,7 @@ int main(int ac, char **av)
     memcpy(buf, av[2], val * 4);
     if (val == 0x574f4c46)//1464814662
 	{
-    	execl("/bin/sh", "sh", 0);
+    	execl("/bin/sh", "sh", (char*)0);
     }
     return (0);
 }
