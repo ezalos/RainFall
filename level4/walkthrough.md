@@ -67,7 +67,7 @@
 	python -c "print('10980408'.decode('hex') + '%8x ' * 10 + '%16930022x' + '%n')" > /var/crash/lvl4
 	```
 	* ```10980408``` is the little endian written address we want to write at
-	* we used ```11``` conversion specifiers to reach the beginiing of the buffer (there were ```(10 + 1) * 4 = 44``` bytes separating first argument of printf from the buffer)
+	* we used ```11``` conversion specifiers to reach the beginning of the buffer (there were ```(10 + 1) * 4 = 44``` bytes separating first argument of printf from the buffer)
 	* we use the lenght modifier ```%16930022x``` to output a final string of the size ```0x1025544```
 	* ```%n``` stores this value at the address ```0x8049810```
 
