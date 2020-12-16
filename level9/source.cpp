@@ -50,8 +50,8 @@ int		main(int ac, char **av)
 	Nb	*a;
 	Nb	*b;
 
-	b = new Nb(6);
 	a = new Nb(5);
+	b = new Nb(6);
 	a->setAnnotation(av[1]);
 	return (((b->fun_tab)[0])(*a, *b));
 }
