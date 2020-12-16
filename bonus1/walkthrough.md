@@ -12,13 +12,13 @@ Keeping only the parts which matters:
  ```
 
  * The program starts with `val = atoi(av[1])`
- * If `(val < 10)` the program continue his execution
+ * If `(val > 9)` the program immediately returns
  * It then does a read on it : `memcpy(buf, av[2], val * 4)`
  	* We would like to make a buffer overflow here, but we need `(val == 11)`
  * Finally if `(val == 0x574f4c46)` we get access to `execl`
 
 ## Execution
-To have a long enough size for `memcpy` we can abuse the fact that the 1st comparison `(val < 10)` is signed while the `3rd argument of memcpy()` is unsigned:
+To have a long enough size for `memcpy` we can abuse the fact that the 1st comparison `(val > 9)` is signed while the `3rd argument of memcpy()` is unsigned:
 
 We can launch the program this way:
 ```sh
