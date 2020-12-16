@@ -8,7 +8,7 @@
 * For the sake of clarity, we won't display the very long disassembled code, but we will describe its behaviour:
 
 	* ```main``` function returns ```1``` if there are not exactly two parameters passed to the program
-	* it allocates on its stack a buffer a ```0x4c``` bytes buffer
+	* it allocates on its stack a ```0x4c``` bytes buffer
 	* the content of ```argv[1]``` is copied using ```strncpy``` with a limit of ```0x28 = 40``` bytes
 	* the content of ```argv[2]``` is copied using ```strncpy``` at the offset ```0x28 = 40``` bytes, with a limit of ```0x20 = 32``` bytes
 	* ```getenv``` gets the value of environment variable ```LANG``` :
@@ -25,8 +25,8 @@
 
 * What we did with all of that:
 
-	* our goal wa to use the buffer allocated in ```greetuser``` to write an address of a shellcode in place of the former ```eip``` address
-	* the offset between the beginning of the buffer and the location of former ```eip``` address is ```0x4c = 76``` bytes : it means that we wanted to write the address of our shellcode ```76``` bytes after the beginning of the buf
+	* our goal was to use the buffer allocated in ```greetuser``` to write an address of a shellcode in place of the former ```eip``` address
+	* the offset between the beginning of the buffer and the location of former ```eip``` address is ```0x4c = 76``` bytes : it means that we want to write the address of our shellcode ```76``` bytes after the beginning of the buf
 	* as ```argv[1]``` is copied in the ```main``` buffer using ```strncpy```, if there is no ```\0``` in the first ```40``` bytes, the copy won't be terminated
 	* we used it to concatenate ```argv[1]``` with ```argv[2]```, allowing us to store a string up to ```40 + 32 = 72``` bytes
 	* before launching the program we made two modifications in the environment :
@@ -37,7 +37,7 @@
 	bonus2@RainFall:~$ /var/crash/env SHELLCODE
 	SHELLCODE: 0xbffff4d0
 	```
-	* we could now exploit the vulnerability of ```bonus2``` file:
+	* then we could exploit the vulnerability of ```bonus2``` file:
 	```
 	bonus2@RainFall:~$ ./bonus2 `python -c "print('A' * 40)"` `python -c "print('B' * 18 + 'd0f4ffbf'.decode('hex'))"`
 	Hyvää päivää AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBB����
