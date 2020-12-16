@@ -24,7 +24,7 @@
 ## Exploited vulnerability
 
 We will use a Buffer-Overflow attack on the 1st `strcpy()` to change the destination of the 2nd.
-We will then do a 2nd Buffer-Overflow attack to change the DYNAMIC RELOCATION RECORD of `puts` so instead of calling the libc function, it will call the wanted `m()` function
+We will then change the DYNAMIC RELOCATION RECORD of `puts` so instead of calling the libc function, it will call the wanted `m()` function
 
 For doing so we need 2 adresses, the one from Dynamic Relocation Record of `puts`
 ```sh
