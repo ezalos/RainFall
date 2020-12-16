@@ -17,9 +17,9 @@
 	* When `printf()` is called here is the stack layout:
 		1. ESP + 00 [4 octets:		printf format string pointer]
 		2. ESP + 04 [4 octets:		data from previous actions  ]
-		2. ESP + 08 [4 octets:		data from previous actions  ]
-		2. ESP + 12 [4 octets:		data from previous actions  ]
-		2. ESP + 16 [0x200 octets:	begining of format buffer   ]
+		3. ESP + 08 [4 octets:		data from previous actions  ]
+		4. ESP + 12 [4 octets:		data from previous actions  ]
+		5. ESP + 16 [0x200 octets:	begining of format buffer   ]
 
 	* So our format should look this way:
 		* [m address][%08x]*3[filler text to write in total `0x40` octets][%n]
